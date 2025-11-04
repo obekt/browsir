@@ -1,0 +1,15 @@
+services:
+  browser-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o-mini}
+      - SELENIUM_TIMEOUT=${SELENIUM_TIMEOUT:-30}
+      - MAX_POPUP_RETRIES=${MAX_POPUP_RETRIES:-3}
+      - CHROME_HEADLESS=${CHROME_HEADLESS:-true}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    restart: on-failure:3
+
+
